@@ -50,7 +50,7 @@ class Lsxs(object):
         self.ser.write("G0 X{0} Y{1}\r\n".format(self.maxx, self.maxy))
 
     def ll(self):
-        self.ser.write("G0 X{0} Y{1}\r\n".format(self.minx, self.,maxy))
+        self.ser.write("G0 X{0} Y{1}\r\n".format(self.minx, self.maxy))
 
     def ul(self):
         self.ser.write("G0 X{0} Y{1}\r\n".format(self.minx, self.miny))
