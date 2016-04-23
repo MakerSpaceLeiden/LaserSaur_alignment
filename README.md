@@ -31,7 +31,7 @@ instance.lowerhorizontal()
 
 ###coordsys
 
-![crdsys](./artwork/drawing.svg)
+![crdsys](./artwork/drawing.png)
 
 ## Disclaimer
 work in progress etc..
