@@ -28,6 +28,10 @@ class Lsxs(object):
     def __init__(self):
         self.ser = serial.Serial(port = "/dev/ttyO1", baudrate=57600)
 	self.open()
+        self.minx = 10
+        self.miny = 10
+        self.maxx = 1100
+        self.maxy = 500
 
     def open(self):
         self.ser.close()
@@ -36,35 +40,39 @@ class Lsxs(object):
     def close(self):
         self.ser.close()
 
-    def home(self):
-        self.ser.write("G0 X10 Y10")
-    
     def reset(self):
         self.ser.write("G30\r\n")
 
+    def home(self):
+        self.ser.write("G0 X{0} Y{1}".format(self.minx, self.miny))
+
     def lr(self):
-        self.ser.write("G0 X1100 Y500\r\n")
+        self.ser.write("G0 X{0} Y{1}\r\n".format(self.maxx, self.maxy))
 
     def ll(self):
-        self.ser.write("G0 X10 Y500\r\n")
+        self.ser.write("G0 X{0} Y{1}\r\n".format(self.minx, self.,maxy))
 
     def ul(self):
-        self.ser.write("G0 X10 Y10\r\n")
+        self.ser.write("G0 X{0} Y{1}\r\n".format(self.minx, self.miny))
 
     def ur(self):
         self.ser.write("G0 X1100 Y10\r\n")
 
     def leftvertical(self):
-        self.command("G0 X10 Y10")
-        self.command("G4 P0.5")
-        self.command("G0 F2000 X10 Y500")
-        self.command("G4 P0.5")
+        self.ul()
+        self.pulse()
+        self.ll()
+        self.pulse()
     
     def lowerhorizontal(self):
-        self.command("G0 X10 Y500")
+        self.ll()
+        self.pulse()
+        self.lr()
+        self.pulse()
+
+    def pulse(self):
         self.command("G4 P0.5")
-        self.command("G0 X1100 Y500")
-        self.command("G4 P0.5")
+
 
     def command(self,str):
         self.ser.write(str+"\r\n")
