@@ -101,11 +101,12 @@ class Lsxs(object):
         self.ser.write(str+"\r\n")
 
 class Handleargs(object):
+	
     #http://www.tutorialspoint.com/python/python_command_line_arguments.htm
     def __init__(self, argv):
         self.argv = argv
 
-    def process(self):
+    def process(self, lsxs):
         try:
             opts, args = getopt.getopt(self.argv,"hd:",["ifile=","ofile="])
         except getopt.GetoptError:
@@ -120,12 +121,15 @@ class Handleargs(object):
                 sys.exit()
             if opt == '-c':
                 #arg
-                pass
+                lsxs.command = arg
                 #sys.exit(1)
+            if opt == '-r':
+            	lsxs.reset()
+            
 
 if __name__=='__main__':
-    arghandler = Handleargs(sys.argv[1:])
-    arghandler.process()
     instance = Lsxs()
+    arghandler = Handleargs(sys.argv[1:])
+    arghandler.process(instance)
     instance.reset()
     instance.close()
