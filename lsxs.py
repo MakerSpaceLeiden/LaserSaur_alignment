@@ -23,15 +23,18 @@
 #  MA 02110-1301, USA.import serial
 import serial
 
+class Const(object):
+	MINX = 10
+	MINY = 10
+	MAXX = 1100
+	MAXY = 500
+
 class Lsxs(object):
 
     def __init__(self):
         self.ser = serial.Serial(port = "/dev/ttyO1", baudrate=57600)
 	self.open()
-        self.minx = 10
-        self.miny = 10
-        self.maxx = 1100
-        self.maxy = 500
+	self.speed = 2000
 
     def open(self):
         self.ser.close()
@@ -40,23 +43,38 @@ class Lsxs(object):
     def close(self):
         self.ser.close()
 
+
+    @property
+    def speed(self):
+   	return self.speed
+
+    @speed.setter
+    def speed(self, spd):
+    	self.speed = spd
+    	self.command = "F{0}".format(self.speed)
+    	
     def reset(self):
-        self.ser.write("G30\r\n")
+        self.command = "G30"
 
     def home(self):
-        self.ser.write("G0 X{0} Y{1}".format(self.minx, self.miny))
+    	self.movetoxy(Const.MINX, Const.MINY)
+
+    def movetoxy(self, x, y):
+    	if ((x<Const.MINX) OR (x>Const.MAXX)) return -1
+    	if ((y<Const.MINY) OR (1>Const.MAXY)) return -1
+    	self.command = "G0 X{0} Y{1}".format(x, y)
 
     def lr(self):
-        self.ser.write("G0 X{0} Y{1}\r\n".format(self.maxx, self.maxy))
+    	self.movetoxy(Const.MAXX, Const.MAXY)
 
     def ll(self):
-        self.ser.write("G0 X{0} Y{1}\r\n".format(self.minx, self.maxy))
+        self.movetoxy(Const.MINX, Const.MAXX)
 
     def ul(self):
-        self.ser.write("G0 X{0} Y{1}\r\n".format(self.minx, self.miny))
-
+        self.movetoxy(Const.MINX, Const.MINY)
+        
     def ur(self):
-        self.ser.write("G0 X1100 Y10\r\n")
+        self.movetoxy(Const.MINX, Const.MAXX)
 
     def leftvertical(self):
         self.ul()
@@ -85,5 +103,3 @@ if __name__=='__main__':
     instance = Lsxs()
     instance.reset()
     instance.close()
-
-
