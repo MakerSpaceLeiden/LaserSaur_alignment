@@ -12,6 +12,12 @@ instance = lsxs.Lsxs()
 instance.reset()
 instance.command = "G0 X100 Y100"
 ```
+or
+
+```python
+instance.movetoxy(100, 100)
+```
+
 ###flash, move, flash
 
 ```python
@@ -22,6 +28,10 @@ or
 ```python
 instance.lowerhorizontal()
 ```
+
+###coordsys
+
+![crdsys](./artwork/drawing.svg)
 
 ## Disclaimer
 work in progress etc..
