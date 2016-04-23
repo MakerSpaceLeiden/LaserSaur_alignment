@@ -71,9 +71,13 @@ class Lsxs(object):
         self.pulse()
 
     def pulse(self):
-        self.command("G4 P0.5")
+        self.command="G4 P0.5"
 
+    @property
+    def command(self):
+        return "enter a gcode command"
 
+    @command.setter
     def command(self,str):
         self.ser.write(str+"\r\n")
 
