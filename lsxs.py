@@ -22,6 +22,7 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.import serial
 import serial
+import sys
 
 class Lsxs(object):
 
@@ -81,7 +82,32 @@ class Lsxs(object):
     def command(self,str):
         self.ser.write(str+"\r\n")
 
+class Handleargs(object):
+    #http://www.tutorialspoint.com/python/python_command_line_arguments.htm
+    def __init__(self, argv):
+        self.argv = argv
+
+    def process(self):
+        try:
+            opts, args = getopt.getopt(self.argv,"hd:",["ifile=","ofile="])
+        except getopt.GetoptError:
+             print 'lsxs.py -c <gcode command> '
+             sys.exit(2)
+        for opt, arg in opts:
+            if opt == '-h':
+                f=open('help.txt', 'r')
+                for line in f.readlines():
+                    print line,
+                f.close()
+                sys.exit()
+            if opt == '-c':
+                #arg
+                pass
+                #sys.exit(1)
+
 if __name__=='__main__':
+    arghandler = Handleargs(sys.argv[1:])
+    arghandler.process()
     instance = Lsxs()
     instance.reset()
     instance.close()
