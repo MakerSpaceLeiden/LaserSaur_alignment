@@ -24,6 +24,20 @@
 import serial
 import sys
 
+class Dummyserial(object):
+	
+    def __init__(self):
+    	pass
+    
+    def open(self):
+    	pass
+    
+    def close(self):
+    	pass
+    
+    def write(self, dummyarg):
+    	pass
+
 class Const(object):
 	MINX = 10
 	MINY = 10
@@ -33,7 +47,10 @@ class Const(object):
 class Lsxs(object):
 
     def __init__(self):
-        self.ser = serial.Serial(port = "/dev/ttyO1", baudrate=57600)
+    	try:
+            self.ser = serial.Serial(port = "/dev/ttyO1", baudrate=57600)
+        except:
+            self.ser = Dummyserial()
 	self.open()
 	self.speed = 2000
 
