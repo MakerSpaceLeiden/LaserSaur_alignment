@@ -125,7 +125,7 @@ class Handleargs(object):
 
     def process(self, lsxs):
         try:
-            opts, args = getopt.getopt(self.argv,"hd:",["ifile=","ofile="])
+            opts, args = getopt.getopt(self.argv,"hc:",["ifile=","ofile="])
         except getopt.GetoptError:
              print 'lsxs.py -c <gcode command> '
              sys.exit(2)
