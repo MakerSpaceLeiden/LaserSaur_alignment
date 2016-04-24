@@ -31,6 +31,15 @@ instance.lowerhorizontal()
 
 ###coordsys
 
+```python
+instance.ll()
+instance.ur()
+.
+.
+.
+etc..
+```
+
 ![crdsys](./artwork/drawing.png)
 
 ## Disclaimer
