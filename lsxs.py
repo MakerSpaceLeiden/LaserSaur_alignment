@@ -52,7 +52,7 @@ class Lsxs(object):
         except:
             self.ser = Dummyserial()
 	self.open()
-	self.speed = 2000
+	self.speed_ = 2000
 
     def open(self):
         self.ser.close()
@@ -64,11 +64,11 @@ class Lsxs(object):
 
     @property
     def speed(self):
-   	return self.speed
+   	return self.speed_
 
     @speed.setter
     def speed(self, spd):
-    	self.speed = spd
+    	self.speed_ = spd
     	self.command = "F{0}".format(self.speed)
     	
     def reset(self):
