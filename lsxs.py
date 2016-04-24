@@ -80,19 +80,27 @@ class Lsxs(object):
     def movetoxy(self, x, y):
     	if ((x<Const.MINX) or (x>Const.MAXX)): return -1
     	if ((y<Const.MINY) or (1>Const.MAXY)): return -1
+	self.command = "G90"
     	self.command = "G0 X{0} Y{1}".format(x, y)
 
     def lr(self):
     	self.movetoxy(Const.MAXX, Const.MAXY)
 
     def ll(self):
-        self.movetoxy(Const.MINX, Const.MAXX)
+        self.movetoxy(Const.MINX, Const.MAXY)
 
     def ul(self):
         self.movetoxy(Const.MINX, Const.MINY)
         
     def ur(self):
-        self.movetoxy(Const.MINX, Const.MAXX)
+        self.movetoxy(Const.MAXX, Const.MINY)
+
+    def roundtrip(self):
+        self.movetoxy(Const.MINX, Const.MINY)
+        self.movetoxy(Const.MINX, Const.MAXY)
+        self.movetoxy(Const.MAXX, Const.MAXY)
+        self.movetoxy(Const.MAXX, Const.MINY)
+        self.movetoxy(Const.MINX, Const.MINY)
 
     def leftvertical(self):
         self.ul()
