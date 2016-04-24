@@ -139,6 +139,7 @@ class Handleargs(object):
             if opt == '-c':
                 #arg
                 lsxs.command = arg
+                print "executed command: {0}".format(arg)
                 #sys.exit(1)
             if opt == '-r':
             	lsxs.reset()
