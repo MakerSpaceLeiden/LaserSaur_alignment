@@ -22,7 +22,7 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.import serial
 import serial
-import sys
+import sys, getopt
 
 class Dummyserial(object):
 	
