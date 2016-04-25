@@ -39,10 +39,10 @@ class Dummyserial(object):
     	pass
 
 class Const(object):
-	MINX = 10
-	MINY = 10
-	MAXX = 1100
-	MAXY = 500
+    MINX = 10
+    MINY = 10
+    MAXX = 1100
+    MAXY = 500
 
 class Lsxs(object):
 
@@ -133,7 +133,7 @@ class Handleargs(object):
 
     def process(self, lsxs):
         try:
-            opts, args = getopt.getopt(self.argv,"hc:",["ifile=","ofile="])
+            opts, args = getopt.getopt(self.argv,"hrc:",["ifile=","ofile="])
         except getopt.GetoptError:
              print 'lsxs.py -c <gcode command> '
              sys.exit(2)
@@ -148,11 +148,11 @@ class Handleargs(object):
                 #arg
                 lsxs.command = arg
                 print "executed command: {0}".format(arg)
-                s = raw_input()
+                s = raw_input("press enter>")
                 #sys.exit(1)
             if opt == '-r':
+                print "resetting.."
             	lsxs.reset()
-            
 
 if __name__=='__main__':
     instance = Lsxs()
