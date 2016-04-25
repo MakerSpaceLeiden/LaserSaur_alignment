@@ -38,6 +38,28 @@ class Dummyserial(object):
     def write(self, dummyarg):
     	pass
 
+    def readlines(self):
+        return "DCPL1L2L3L4X0.000Y0.000V12.08"
+
+class Post(object):
+
+    def __init__(self, function):
+        self.function = function
+
+    def __call__(self, *args, **kwargs):
+        mylsxs = args[0]
+        lines = mylsxs.ser.readlines()
+        #actual postprocessor here:
+        mylsxs.returnval = lines
+        return self.function(*args, **kwargs)
+
+    def __get__(self, instance, owner):
+        def wrapper(*args, **kwargs):
+            return self(instance, *args, **kwargs)
+        wrapper.__doc__ = self.function.__doc__
+        wrapper.__name__ = self.function.__name__
+        return wrapper
+
 class Const(object):
     MINX = 10
     MINY = 10
@@ -53,6 +75,7 @@ class Lsxs(object):
             self.ser = Dummyserial()
 	self.open()
 	self.speed_ = 2000
+        self.returnval = None
 
     def open(self):
         self.ser.close()
@@ -122,8 +145,17 @@ class Lsxs(object):
         return "enter a gcode command"
 
     @command.setter
+    @Post
     def command(self,str):
         self.ser.write(str+"\r\n")
+
+    @Post
+    def status(self):
+        self.ser.write("\r\n")
+
+    def state(self):
+        self.status()
+
 
 class Handleargs(object):
 	
