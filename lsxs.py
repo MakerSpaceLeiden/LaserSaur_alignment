@@ -76,6 +76,8 @@ class Lsxs(object):
 	self.open()
 	self.speed_ = 2000
         self.returnval = None
+        self.X = 0
+        self.Y = 0
 
     def open(self):
         self.ser.close()
@@ -151,11 +153,17 @@ class Lsxs(object):
 
     @Post
     def status(self):
-        self.ser.write("\r\n")
+        self.ser.write("?\r\n")
 
     def state(self):
         self.status()
 
+    def report(self):
+        try:
+            self.X = s.split("X")[1].split("Y")[0]
+            self.Y = s.split("Y")[1].split("V")[0]
+        except:
+            pass
 
 class Handleargs(object):
 	
