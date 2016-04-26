@@ -151,19 +151,20 @@ class Lsxs(object):
     #@Post
     def command(self,str):
         self.ser.write(str+"\r\n")
-        rd = True
-        time.sleep(1)
-       	line = self.ser.read(self.ser.inWaiting())
-        print line
 
     #@Post
     def status(self):
         self.ser.write("?\r\n")
-
+        time.sleep(1)
+        line = self.ser.read(self.ser.inWaiting())
+        print line
+        self.returnval = line
+        
     def state(self):
         self.status()
 
     def report(self):
+    	s = self.returnval
         try:
             self.X = s.split("X")[1].split("Y")[0]
             self.Y = s.split("Y")[1].split("V")[0]
