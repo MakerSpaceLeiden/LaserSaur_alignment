@@ -136,7 +136,7 @@ class Lsxs(object):
         self.command = "G90"
         self.ll()
         #self.command = "G91"
-        self.command = "G0 X10 Y490"
+        self.command = "G1 X10 Y490"
         #self.pulse()
     
     def lowerhorizontal(self):
