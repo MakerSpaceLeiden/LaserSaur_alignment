@@ -150,7 +150,7 @@ class Lsxs(object):
     #@Post
     def command(self,str):
         self.ser.write(str+"\r\n")
-        lines = self.ser.readlines()
+        lines = self.ser.read()
         print lines
 
     #@Post
