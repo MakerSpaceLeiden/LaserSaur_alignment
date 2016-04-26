@@ -23,6 +23,7 @@
 #  MA 02110-1301, USA.import serial
 import serial
 import sys, getopt
+import time
 
 class Dummyserial(object):
 	
@@ -150,8 +151,10 @@ class Lsxs(object):
     #@Post
     def command(self,str):
         self.ser.write(str+"\r\n")
-        lines = self.ser.read()
-        print lines
+        rd = True
+        time.sleep(1)
+       	line = self.ser.read(self.ser.inWaiting())
+        print line
 
     #@Post
     def status(self):
