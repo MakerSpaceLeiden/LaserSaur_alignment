@@ -39,7 +39,7 @@ class Dummyserial(object):
     	pass
 
     def readlines(self):
-        return "DCPL1L2L3L4X0.000Y0.000V12.08"
+        return "DCX4.995Y5.005V14.11"
 
 class Post(object):
 
@@ -48,9 +48,9 @@ class Post(object):
 
     def __call__(self, *args, **kwargs):
         mylsxs = args[0]
-        lines = mylsxs.ser.readlines()
+        #lines = mylsxs.ser.readlines()
         #actual postprocessor here:
-        mylsxs.returnval = lines
+        #mylsxs.returnval = lines
         return self.function(*args, **kwargs)
 
     def __get__(self, instance, owner):
@@ -150,6 +150,8 @@ class Lsxs(object):
     @Post
     def command(self,str):
         self.ser.write(str+"\r\n")
+        lines = self.ser.readlines()
+        print lines
 
     @Post
     def status(self):
