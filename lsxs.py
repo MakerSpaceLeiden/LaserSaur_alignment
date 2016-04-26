@@ -147,13 +147,13 @@ class Lsxs(object):
         return "enter a gcode command"
 
     @command.setter
-    @Post
+    #@Post
     def command(self,str):
         self.ser.write(str+"\r\n")
         lines = self.ser.readlines()
         print lines
 
-    @Post
+    #@Post
     def status(self):
         self.ser.write("?\r\n")
 
