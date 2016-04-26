@@ -131,12 +131,12 @@ class Lsxs(object):
     def leftvertical(self):
         self.ul()
         self.command = "G91"
-        self.command = "G0 Y10"
+        self.command = "G1 Y10"
         #self.pulse()
         self.command = "G90"
         self.ll()
         self.command = "G91"
-        self.command = "G0 Y-10"
+        self.command = "G1 Y-10"
         #self.pulse()
     
     def lowerhorizontal(self):
