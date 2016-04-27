@@ -131,11 +131,13 @@ class Lsxs(object):
     def leftvertical(self):
         self.ul()
         self.command = "G91"
+        self.command = "G1 X0 Y0"
         self.command = "G1 X0 Y10"
         #self.pulse()
         self.command = "G90"
         self.ll()
         self.command = "G91"
+        self.command = "G1 X0 Y0"
         self.command = "G1 X0 Y-10"
         #self.pulse()
     
