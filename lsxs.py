@@ -234,7 +234,7 @@ class Handleargs(object):
 
     def process(self, lsxs):
         try:
-            opts, args = getopt.getopt(self.argv,"hrc:",["ifile=","ofile="])
+            opts, args = getopt.getopt(self.argv,"hrlrudc:",["ifile=","ofile="])
         except getopt.GetoptError:
              print 'lsxs.py -c <gcode command> '
              sys.exit(2)
@@ -254,6 +254,14 @@ class Handleargs(object):
             if opt == '-r':
                 print "resetting.."
             	lsxs.reset()
+            if opt == '-l':
+            	lsxs.leftvertical()
+            if opt == '-r':
+            	lsxs.rigthvertical()
+            if opt == 'u':
+            	lsxs.upperhorizontal()
+            if opt == 'd':
+            	lsxs.lowerhorizontal()
 
 if __name__=='__main__':
     instance = Lsxs()
