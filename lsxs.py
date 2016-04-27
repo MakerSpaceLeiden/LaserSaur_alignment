@@ -257,7 +257,7 @@ class Handleargs(object):
             if opt == '-l':
             	lsxs.leftvertical()
             if opt == '-r':
-            	lsxs.rigthvertical()
+            	lsxs.rightvertical()
             if opt == 'u':
             	lsxs.upperhorizontal()
             if opt == 'd':
