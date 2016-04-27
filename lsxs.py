@@ -143,9 +143,14 @@ class Lsxs(object):
     
     def lowerhorizontal(self):
         self.ll()
-        self.pulse()
+        self.command = "G91"
+        self.command = "G1 X0 Y0"
+        self.command = "G90"
         self.lr()
-        self.pulse()
+        self.command = "G91"
+        self.command = "G1 X0 Y0"
+        self.command = "G90"
+        
 
     def pulse(self):
         self.command="G4 P0.5"
