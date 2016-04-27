@@ -145,10 +145,12 @@ class Lsxs(object):
         self.ll()
         self.command = "G91"
         self.command = "G1 X0 Y0"
+        self.command = "G1 X10 Y0"
         self.command = "G90"
         self.lr()
         self.command = "G91"
         self.command = "G1 X0 Y0"
+        self.command = "G1 X-10 Y0"
         self.command = "G90"
         
 
