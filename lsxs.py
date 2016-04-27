@@ -76,6 +76,7 @@ class Lsxs(object):
             self.ser = Dummyserial()
 	self.open()
 	self.speed_ = 2000
+	self.power_ = 0.4
         self.returnval = None
         self.X = 0
         self.Y = 0
@@ -87,6 +88,18 @@ class Lsxs(object):
     def close(self):
         self.ser.close()
 
+    @property
+    def power(self):
+    	return self.power_
+    
+    @power.setter
+    def power(self, p):
+    	self.power_ = p
+    	#add checks etc..
+    	try:
+    	    self.command = "S{0}".format(int(p*255))
+    	except:
+    	    print ("Wrong power setting")
 
     @property
     def speed(self):
@@ -129,6 +142,7 @@ class Lsxs(object):
         self.movetoxy(Const.MINX, Const.MINY)
 
     def leftvertical(self):
+    	self.power = 0.4
         self.ul()
         self.command = "G91"
         self.command = "G1 X0 Y0"
@@ -142,6 +156,7 @@ class Lsxs(object):
         #self.pulse()
     
     def rightvertical(self):
+    	self.power = 0.4
         self.ur()
         self.command = "G91"
         self.command = "G1 X0 Y0"
@@ -155,6 +170,7 @@ class Lsxs(object):
         #self.pulse()    
         
     def lowerhorizontal(self):
+    	self.power = 0.4
         self.ll()
         self.command = "G91"
         self.command = "G1 X0 Y0"
@@ -167,6 +183,7 @@ class Lsxs(object):
         self.command = "G90"
         
     def upperhorizontal(self):
+    	self.power = 0.4
         self.ul()
         self.command = "G91"
         self.command = "G1 X0 Y0"
