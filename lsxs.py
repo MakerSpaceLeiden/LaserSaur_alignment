@@ -141,18 +141,28 @@ class Lsxs(object):
         self.movetoxy(Const.MAXX, Const.MINY)
         self.movetoxy(Const.MINX, Const.MINY)
 
-    def leftvertical(self):
+    def leftvertical(self, direction=0):
     	self.power = 0.4
-        self.ul()
+    	if direction == 0:
+    	    dy = "10"
+            self.ul()
+        else:
+            dy = "-10"
+            self.ll()
         self.command = "G91"
         self.command = "G1 X0 Y0"
-        self.command = "G1 X0 Y10"
+        self.command = "G1 X0 Y{0}".format(dy)
         #self.pulse()
         self.command = "G90"
-        self.ll()
+        if direction == 0:
+            dy = "-10"
+            self.ll()
+        else:
+            dy = "10"
+            self.ul()
         self.command = "G91"
         self.command = "G1 X0 Y0"
-        self.command = "G1 X0 Y-10"
+        self.command = "G1 X0 Y{0}".format(dy)
         #self.pulse()
     
     def rightvertical(self):
