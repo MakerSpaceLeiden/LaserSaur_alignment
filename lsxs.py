@@ -166,7 +166,7 @@ class Lsxs(object):
         self.command = "G1 X-10 Y0"
         self.command = "G90"
         
-def upperhorizontal(self):
+    def upperhorizontal(self):
         self.ul()
         self.command = "G91"
         self.command = "G1 X0 Y0"
