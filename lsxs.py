@@ -267,5 +267,6 @@ if __name__=='__main__':
     instance = Lsxs()
     arghandler = Handleargs(sys.argv[1:])
     arghandler.process(instance)
-    instance.reset()
+    #instance.reset()
+    s = raw_input()
     instance.close()
