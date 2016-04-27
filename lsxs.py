@@ -258,9 +258,9 @@ class Handleargs(object):
             	lsxs.leftvertical()
             if opt == '-r':
             	lsxs.rightvertical()
-            if opt == 'u':
+            if opt == '-u':
             	lsxs.upperhorizontal()
-            if opt == 'd':
+            if opt == '-d':
             	lsxs.lowerhorizontal()
 
 if __name__=='__main__':
