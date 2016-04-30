@@ -167,10 +167,10 @@ class Lsxs(object):
     def lowerhorizontal(self, direction=0):
     	self.power = 0.4
     	if direction == 0:
-    	    dx = "10"
+    	    dx = "30"
             self.ll()
         else:
-            dx = "-10"
+            dx = "-30"
             self.lr()
         self.command = "G91"
         self.command = "G1 X0 Y0"
@@ -178,10 +178,10 @@ class Lsxs(object):
         #self.pulse()
         self.command = "G90"
         if direction == 0:
-            dx = "-10"
+            dx = "-30"
             self.lr()
         else:
-            dx = "10"
+            dx = "30"
             self.ll()
         self.command = "G91"
         self.command = "G1 X0 Y0"
