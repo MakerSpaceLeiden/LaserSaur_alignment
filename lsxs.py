@@ -24,6 +24,7 @@
 import serial
 import sys, getopt
 import time
+import math
 
 class Dummyserial(object):
 	
