@@ -117,11 +117,11 @@ class Lsxs(object):
     def home(self):
     	self.movetoxy(Const.MINX, Const.MINY)
 
-    def movetoxy(self, x, y):
+    def movetoxy(self, x, y, laser=0):
     	if ((x<Const.MINX) or (x>Const.MAXX)): return -1
     	if ((y<Const.MINY) or (1>Const.MAXY)): return -1
 	self.command = "G90"
-    	self.command = "G0 X{0} Y{1}".format(x, y)
+    	self.command = "G{0} X{1} Y{2}".format(laser, x, y)
 
     def lr(self):
     	self.movetoxy(Const.MAXX, Const.MAXY)
@@ -141,7 +141,7 @@ class Lsxs(object):
     	    alpha = 1.0*i/N*2.0*3.1415926535
     	    X = r * math.cos(alpha)+x
     	    Y = r * math.sin(alpha)+y
-    	    self.movetoxy(X, Y)
+    	    self.movetoxy(X, Y, laser=1)
 
     def roundtrip(self):
         self.movetoxy(Const.MINX, Const.MINY)
