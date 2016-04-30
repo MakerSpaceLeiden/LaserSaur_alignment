@@ -134,6 +134,14 @@ class Lsxs(object):
     def ur(self):
         self.movetoxy(Const.MAXX, Const.MINY)
 
+    def circle(self, r, x, y, N):
+    	self.movetoxy(x, y)
+    	for i in range(N):
+    	    alpha = 1.0*i/N*2.0*3.1415926535
+    	    X = r * math.cos(alpha)+x
+    	    Y = r * math.sin(alpha)+y
+    	    self.movetoxy(X, Y)
+
     def roundtrip(self):
         self.movetoxy(Const.MINX, Const.MINY)
         self.movetoxy(Const.MINX, Const.MAXY)
