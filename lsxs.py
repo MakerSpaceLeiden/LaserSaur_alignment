@@ -164,6 +164,29 @@ class Lsxs(object):
         self.command = "G1 X0 Y0"
         self.command = "G1 X0 Y{0}".format(dy)
         #self.pulse()
+    def lowerhorizontal(self, direction=0):
+    	self.power = 0.4
+    	if direction == 0:
+    	    dx = "10"
+            self.ll()
+        else:
+            dx = "-10"
+            self.lr()
+        self.command = "G91"
+        self.command = "G1 X0 Y0"
+        self.command = "G1 X{0} Y0".format(dx)
+        #self.pulse()
+        self.command = "G90"
+        if direction == 0:
+            dx = "-10"
+            self.lr()
+        else:
+            dx = "10"
+            self.ll()
+        self.command = "G91"
+        self.command = "G1 X0 Y0"
+        self.command = "G1 X{0} Y0".format(dx)
+        #self.pulse()
     
     def rightvertical(self):
     	self.power = 0.4
@@ -179,7 +202,7 @@ class Lsxs(object):
         self.command = "G1 X0 Y-10"
         #self.pulse()    
         
-    def lowerhorizontal(self):
+    def lowerhorizontal_(self, direction =0):
     	self.power = 0.4
         self.ll()
         self.command = "G91"
