@@ -1,5 +1,5 @@
 
--h get help
+-h show this
 -R reset
 -l move head to upper left corner, flash, move to lower left corner and flash again and wait for user to press enter
 -r move head to upper right corner, flash, move to lower right corner and flash again and wait for user to press enter
