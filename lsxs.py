@@ -179,7 +179,7 @@ class Lsxs(object):
         
     def lowerhorizontal(self, direction=0):
     	self.power = 0.4
-	dy = 0
+	dy = "0"
     	if direction == 0:
     	    dx = "30"
             self.ll()
