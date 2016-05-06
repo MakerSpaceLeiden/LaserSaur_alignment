@@ -186,7 +186,7 @@ class Lsxs(object):
         else:
             dx = "-30"
             self.lr()
-	laser(dx, dy)
+	self.laser(dx, dy)
         #self.pulse()
         self.command = "G90"
         if direction == 0:
@@ -195,35 +195,35 @@ class Lsxs(object):
         else:
             dx = "30"
             self.ll()
-	laser(dx, dy)
+	self.laser(dx, dy)
         #self.pulse()
     
     def rightvertical(self):
     	self.power = 0.4
         self.ur()
-        laser(0, 10)
+        self.laser(0, 10)
         #self.pulse()
         self.command = "G90"
         self.lr()
-	laser(0, -10)
+	self.laser(0, -10)
 	#self.pulse()    
         
     def lowerhorizontal_(self, direction =0):
     	self.power = 0.4
         self.ll()
-	laser(10,0)
+	self.laser(10,0)
         self.command = "G90"
         self.lr()
-	laser(-10,0)
+	self.laser(-10,0)
         self.command = "G90"
         
     def upperhorizontal(self):
     	self.power = 0.4
         self.ul()
-	laser(10,0)
+	self.laser(10,0)
         self.command = "G90"
         self.ur()
-	laser(-10,0)
+	self.laser(-10,0)
         self.command = "G90"
         
     def pulse(self):
