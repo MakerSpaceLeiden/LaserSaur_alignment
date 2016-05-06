@@ -165,7 +165,7 @@ class Lsxs(object):
         else:
             dy = "-10"
             self.ll()
-	laser(dx, dy)
+	self.laser(dx, dy)
         #self.pulse()
         self.command = "G90"
         if direction == 0:
@@ -174,7 +174,7 @@ class Lsxs(object):
         else:
             dy = "10"
             self.ul()
-        laser(dx, dy)
+        self.laser(dx, dy)
         #self.pulse()
         
     def lowerhorizontal(self, direction=0):
