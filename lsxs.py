@@ -154,7 +154,7 @@ class Lsxs(object):
     	#with laser on, move relative dx, dy
         self.command = "G91"
         self.command = "G1 X0 Y0"
-        self.command = "G1 X{0} Y{0}".format(dx, dy)
+        self.command = "G1 X{0} Y{1}".format(dx, dy)
 
     def leftvertical(self, direction=0):
     	self.power = 0.4
