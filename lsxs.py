@@ -176,7 +176,33 @@ class Lsxs(object):
             self.ul()
         self.laser(dx, dy)
         #self.pulse()
-        
+ 
+    def leftverticalhalfway(self, direction=0):
+	#very ugly, later fix
+    	self.power = 0.4
+    	if direction == 0:
+    	    dy = "10"
+            self.ul()
+        else:
+            dy = "-10"
+            self.ll()
+        self.command = "G91"
+        self.command = "G1 X0 Y0"
+        self.command = "G1 X0 Y{0}".format(dy)
+        #self.pulse()
+        self.command = "G90"
+        if direction == 0:
+            dy = "-10"
+            #self.ll()
+            self.movetoxy(Const.MINX, int(Const.MAXY/2))
+        else:
+            dy = "10"
+            self.ul()
+        self.command = "G91"
+        self.command = "G1 X0 Y0"
+        self.command = "G1 X0 Y{0}".format(dy)
+        #self.pulse()      
+	
     def lowerhorizontal(self, direction=0):
     	self.power = 0.4
 	dy = "0"
