@@ -157,7 +157,7 @@ class Lsxs(object):
         self.command = "G1 X{0} Y{1}".format(dx, dy)
 
     def leftvertical(self, direction=0):
-    	self.power = 0.4
+    	#self.power = 0.4
     	dx = 0
     	if direction == 0:
     	    dy = "10"
@@ -179,7 +179,7 @@ class Lsxs(object):
  
     def leftverticalhalfway(self, direction=0):
 	#very ugly, later fix
-    	self.power = 0.4
+    	#self.power = 0.4
     	if direction == 0:
     	    dy = "10"
             self.ul()
